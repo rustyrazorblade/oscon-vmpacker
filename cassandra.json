@@ -32,10 +32,9 @@
       },
       {
           "type": "shell",
-          "scripts": ["env.sh",
-                      "java8.sh",
+          "scripts": ["java8.sh",
                       "cassandra-3.0.x.sh",
-                      "spark-1.6.sh"]
+                      ]
 
       }
   ]
