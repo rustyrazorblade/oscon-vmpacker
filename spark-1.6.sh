@@ -11,7 +11,7 @@ cat <<EOF > /etc/rc.local
 export SPARK_MASTER_IP=127.0.0.1
 cd /usr/local/spark-1.6.1-bin-cdh4
 sbin/start-master.sh
-sbin/start-slave.sh -m 1G spark://localhost:7077
+sbin/start-slave.sh -m 512M spark://localhost:7077
 
 exit 0
 EOF

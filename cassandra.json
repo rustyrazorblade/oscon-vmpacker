@@ -7,7 +7,7 @@
         "ssh_password": "demo",
         "headless": true,
         "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
-        "output_directory": "oscon2016",
+        "output_directory": "cassandra",
         "vboxmanage": [
             ["modifyvm", "{{.Name}}", "--memory", "3072"],
             ["modifyvm", "{{.Name}}", "--cpus", "2"]
@@ -15,11 +15,6 @@
       }
   ],
   "provisioners": [
-      {
-          "type": "file",
-          "source": "spark-cassandra-connector-assembly-1.6.0-M2.jar",
-          "destination": "/tmp/spark-cassandra-connector-assembly-1.6.0-M2.jar"
-      },
       {
           "type": "file",
           "source": "cassandra.yaml",
@@ -33,7 +28,7 @@
       {
           "type": "shell",
           "scripts": ["java8.sh",
-                      "cassandra-3.0.x.sh",
+                      "cassandra-3.0.x.sh"
                       ]
 
       }
