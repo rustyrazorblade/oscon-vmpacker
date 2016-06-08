@@ -1,0 +1,27 @@
+{
+    "builders": [{
+        "type": "virtualbox-ovf",
+        "source_path": "oscon2016/packer-virtualbox-ovf-1462941798.ovf",
+        "guest_additions_mode": "disable",
+        "ssh_username": "root",
+        "ssh_password": "demo",
+        "headless": true,
+        "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+        "output_directory": "oscon2016.2",
+
+        "vboxmanage": [
+            ["modifyvm", "{{.Name}}", "--memory", "3072"],
+            ["modifyvm", "{{.Name}}", "--cpus", "2"]
+        ]
+
+
+      }
+  ],
+  "provisioners": [
+      {
+          "type":"shell",
+          "scripts":"fix_spark.sh"
+      }
+  ]
+
+}

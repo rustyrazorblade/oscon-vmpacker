@@ -6,12 +6,14 @@ cd /usr/local/spark-1.6.1-bin-cdh4/conf
 cp spark-defaults.conf.template spark-defaults.conf
 cp spark-env.sh.template spark-env.sh
 
+## ssh to itself to start spark
+cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys2
+
 cat <<EOF > /etc/rc.local
 #!/bin/sh -e
 export SPARK_MASTER_IP=127.0.0.1
 cd /usr/local/spark-1.6.1-bin-cdh4
-sbin/start-master.sh
-sbin/start-slave.sh -m 512M spark://localhost:7077
+./sbin/start-all.sh
 
 exit 0
 EOF
